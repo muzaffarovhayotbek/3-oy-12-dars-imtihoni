@@ -1,16 +1,19 @@
-header {
-  margin-top: 27px;
-  margin-bottom: 27px;
+@mixin header-style($margin-top: 27px, $margin-bottom: 27px) {
+  margin-top: $margin-top;
+  margin-bottom: $margin-bottom;
 }
-.header__container {
+
+@mixin header-container-style {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.header-icon {
+
+@mixin header-icon-style {
   display: flex;
   align-items: center;
   gap: 12px;
+
   h2 {
     font-family: "Hind Siliguri";
     font-size: 23px;
@@ -19,7 +22,7 @@ header {
   }
 }
 
-.header-ul {
+@mixin header-ul-style {
   align-items: center;
   gap: 40px;
   list-style: none;
@@ -32,14 +35,15 @@ header {
     line-height: 17.1px;
     color: rgba(41, 40, 48, 1);
     transition: all 0.5s;
-  }
-  a:hover {
-    cursor: pointer;
-    text-decoration: underline;
+
+    &:hover {
+      cursor: pointer;
+      text-decoration: underline;
+    }
   }
 }
 
-.header-button {
+@mixin header-button-style {
   button {
     justify-content: center;
     display: flex;
@@ -54,9 +58,31 @@ header {
     line-height: 17.1px;
     background-color: #fff;
     color: rgba(255, 114, 53, 1);
-  }
-  button:hover {
-    cursor: pointer;
+
+    &:hover {
+      cursor: pointer;
+    }
   }
 }
+
+header {
+  @include header-style();
+}
+
+.header__container {
+  @include header-container-style();
+}
+
+.header-icon {
+  @include header-icon-style();
+}
+
+.header-ul {
+  @include header-ul-style();
+}
+
+.header-button {
+  @include header-button-style();
+}
+
 
